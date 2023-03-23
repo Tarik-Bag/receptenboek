@@ -107,7 +107,7 @@ if (isset($_POST['submit'])) {
         <form action="" method="post">
             <input type="text" placeholder="email" name="email" required>
             <input type="password" placeholder="Wachtwoord" name="wachtwoord" required>
-            <input type="submit" value="Sign In" name="submit">
+            <input type="submit" value="Log In" name="submit">
         </form>
     </div>
 </body>

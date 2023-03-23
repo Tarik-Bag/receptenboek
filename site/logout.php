@@ -11,6 +11,8 @@ if(isset($_SESSION['gebruikerData'])){
 }
 else{
 
+    session_destroy();
+
     echo "<script>alert('Already logout!'); window.location.href = 'login.php';</script>";
 
 }
