@@ -4,6 +4,7 @@ require 'database.php';
 
 session_start();
 
+// controleren als admin is of niet
 if(isset($_SESSION['gebruikerData'])){
 
     if($_SESSION['gebruikerData']['rol'] == 'admin'){
@@ -36,8 +37,6 @@ if (isset($_POST["submit"])){
     $email = $_POST['email'];
     $wachtwoord = $_POST['wachtwoord'];
     $rol = $_POST['rol'];
-
-   
 
     if (!empty($_POST["naam"])) {
 

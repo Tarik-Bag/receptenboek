@@ -4,6 +4,7 @@ require 'database.php';
 
 session_start();
 
+// controleren als admin is of niet
 if(isset($_SESSION['gebruikerData'])){
 
     if($_SESSION['gebruikerData']['rol'] == 'admin'){
@@ -23,15 +24,20 @@ if(isset($_SESSION['gebruikerData'])){
 
 $id = $_GET['id'];
 
-$stmt = $conn->prepare("SELECT * FROM recept WHERE id = :id");
+$stmt = $conn->prepare("SELECT *, gebruiker.id AS gebruiker_ID 
+FROM recept 
+LEFT JOIN gebruiker ON gebruiker.id = recept.gebruiker_id
+WHERE recept.id = :id");
 $stmt->bindParam(':id', $id);
 $stmt->execute();
 
 $recept = $stmt->fetch(PDO::FETCH_ASSOC);
+var_dump($recept); die;
 
 if (isset($_POST["submit"])){
-
-    $titel = $_POST['titel'];
+	
+	
+	$titel = $_POST['titel'];
     $afbeelding = $_POST['afbeelding'];
     $duur = $_POST['duur'];
     $menugang = $_POST['menugang'];
@@ -40,9 +46,9 @@ if (isset($_POST["submit"])){
 
     if (!empty($_POST["titel"])) {
 
-        
-        $recept = $_POST["titel"];
-
+		
+		$recept = $_POST["titel"];
+		
         $stmt = $conn->prepare("UPDATE recept SET titel = :titel, afbeelding = :afbeelding, duur = :duur,
         menugang = :menugang, moeilijkheid = :moeilijkheid, instructies = :instructies 
         WHERE id = :id");
@@ -59,6 +65,7 @@ if (isset($_POST["submit"])){
         
     }
 }
+
 
 ?>
 
@@ -127,7 +134,7 @@ if (isset($_POST["submit"])){
 		</select>
         
         <label for="instructies">Instructies:</label>
-		<input type="text" id="instructies" name="instructies" value="<?php echo $recept["instructies"]; ?>">
+		<input type="textarea" id="instructies" name="instructies" value="<?php echo $recept["instructies"]; ?>">
 
 		<input type="submit" value="Update" name="submit">
 	</form>

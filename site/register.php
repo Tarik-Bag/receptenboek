@@ -25,12 +25,9 @@ if(isset($_POST['submit'])){
     // query uitvoeren
     $stmt->execute();
     
-    echo "<script>alert('Registered!'); window.location.href = 'login.php';</script>";
+    echo "<script>alert('Geregistreerd!'); window.location.href = 'login.php';</script>";
 
 }
-
-
-
 
 ?>
 
@@ -108,7 +105,7 @@ if(isset($_POST['submit'])){
         <label for="wachtwoord">Wachtwoord</label>
         <input type="password" id="wachtwoord" name="wachtwoord" placeholder="Voer uw wachtwoord in" >
 
-        <button type="submit" name="submit">Register</button>
+        <button type="submit" value="Register" name="submit">Register</button>
     </form>
 </body>
 

@@ -4,6 +4,7 @@ require 'database.php';
 
 session_start();
 
+// controleren als ingelogd is of niet
 if(isset($_SESSION['gebruikerData'])){
 
     echo "<script>alert('Welkom op dashboard!');</script>";

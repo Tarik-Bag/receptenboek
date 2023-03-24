@@ -4,6 +4,7 @@ require 'database.php';
 
 session_start();
 
+// controleren als admin is of niet
 if(isset($_SESSION['gebruikerData'])){
 
     if($_SESSION['gebruikerData']['rol'] == 'admin'){
@@ -22,13 +23,15 @@ if(isset($_SESSION['gebruikerData'])){
 }
 
 
-$stmt = $conn->prepare("SELECT *, recept.id AS recept_ID FROM recept 
-JOIN gebruiker ON gebruiker.id = recept.gebruiker_id");
+$stmt = $conn->prepare("SELECT *, gebruiker.id AS gebruiker_ID FROM recept 
+LEFT JOIN gebruiker ON gebruiker.id = recept.gebruiker_id");
 $stmt->execute();
 
 // set the resulting array to associative
 $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
 $recepten = $stmt->fetchAll();
+
+
 
 ?>
 
@@ -87,7 +90,9 @@ $recepten = $stmt->fetchAll();
 				<th>Menugang</th>
 				<th>Moeilijkheid</th>
 				<th>Instructies</th>
-				<th>Gebruiker ID</th>
+				<th>Gebruiker Naam</th>
+				<th>Update</th>
+				<th>Delete</th>
 			</tr>
         </thead>
 
@@ -103,7 +108,8 @@ $recepten = $stmt->fetchAll();
                     <td> <?php echo $recept["moeilijkheid"] ?> </td>
                     <td> <?php echo $recept["instructies"] ?> </td>
                     <td> <?php echo $recept["naam"] ?> </td>
-                    <td> <a href="update-recept.php?recept_ID=<?php echo $gebruiker["recept_ID"] ?>"> Update Data </a> </td>
+                    <td> <a href="update-recept.php?id=<?php echo $recept["id"] ?>"> Update Data </a> </td>
+                    <td> <a href="delete-recept.php?id=<?php echo $recept["id"] ?>"> Delete Data </a> </td>
                 </tr>
 
             <?php } ?>

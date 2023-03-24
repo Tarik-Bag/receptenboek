@@ -4,6 +4,7 @@ require 'database.php';
 
 session_start();
 
+// controleren als admin is of niet
 if(isset($_SESSION['gebruikerData'])){
 
     if($_SESSION['gebruikerData']['rol'] == 'admin'){
@@ -65,13 +66,14 @@ $gebruikers = $stmt->fetchAll();
     <table>
 		<thead>
 			<tr>
-            <th>ID</th>
-            <th>Naam</th>
-            <th>Achternaam</th>
-            <th>Email</th>
-            <th>Wachtwoord</th>
-            <th>Rol</th>
-            <th>Update</th>
+                <th>ID</th>
+                <th>Naam</th>
+                <th>Achternaam</th>
+                <th>Email</th>
+                <th>Wachtwoord</th>
+                <th>Rol</th>
+                <th>Update</th>
+                <th>Delete</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -85,6 +87,7 @@ $gebruikers = $stmt->fetchAll();
                     <td> <?php echo $gebruiker["wachtwoord"] ?> </td>
                     <td> <?php echo $gebruiker["rol"] ?> </td>
                     <td> <a href="update-gebruiker.php?id=<?php echo $gebruiker["id"] ?>"> Update Data </a> </td>
+                    <td> <a href="delete-gebruiker.php?id=<?php echo $gebruiker["id"] ?>"> Delete Data </a> </td>
                 </tr>
 
             <?php } ?>
