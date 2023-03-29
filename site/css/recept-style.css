@@ -1,0 +1,113 @@
+body {
+	margin: 0;
+	padding: 0;
+	font-family: Arial, sans-serif;
+}
+
+header {
+	background-color: #333;
+	color: #fff;
+	padding: 20px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+nav ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+}
+
+nav ul li {
+	margin-left: 20px;
+}
+
+nav ul li a {
+	color: #fff;
+	text-decoration: none;
+}
+
+main {
+	max-width: 800px;
+	margin: 0 auto;
+	padding: 20px;
+}
+
+#recipe-intro {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-bottom: 40px;
+}
+
+#recipe-intro img {
+	margin-top: 20px;
+    border-radius: 15px;
+    width: 500px;
+    height: 400px;
+}
+
+#recipe-intro button {
+	background-color: #333;
+	color: #fff;
+	border: none;
+	padding: 10px 20px;
+	margin-top: 20px;
+	cursor: pointer;
+}
+
+#recipe-ingredients ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+#recipe-instructions ol {
+	margin: 0;
+	padding: 0;
+	counter-reset: steps;
+}
+
+#recipe-instructions li {
+	counter-increment: steps;
+	margin-bottom: 10px;
+}
+
+#recipe-instructions li::before {
+	content: counter(steps) ".";
+	margin-right: 10px;
+	color: #333;
+}
+
+.button-container {
+	width: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 50px;
+	background-color: #f2f2f2;
+	margin-bottom: 30px;
+}
+
+.button-container a {
+	display: inline-block;
+	padding: 10px 20px;
+	border-radius: 5px;
+	border: none;
+	background-color: #4CAF50;
+	color: white;
+	font-size: 16px;
+	text-decoration: none;
+}  
+
+.duur, .menugang, .moeilijkheid{
+	margin-bottom: 50px;
+    width: 33.33%;
+    float: left;
+    box-sizing: border-box;
+}

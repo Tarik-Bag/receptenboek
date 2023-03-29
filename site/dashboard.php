@@ -2,8 +2,6 @@
 
 require 'database.php';
 
-session_start();
-
 // controleren als ingelogd is of niet
 if(isset($_SESSION['gebruikerData'])){
 
@@ -27,6 +25,9 @@ if(isset($_SESSION['gebruikerData'])){
     <title>Dashboard</title>
 </head>
 <body>
+
+<?php include 'assets/nav.php'; ?>
+
     <table>
         <tbody>
             <tr>
@@ -37,7 +38,14 @@ if(isset($_SESSION['gebruikerData'])){
                         echo "hidden";
                     } 
                 } ?> > Gebruiker Beheer </a> </td>
-                <td>
+                <td><br>
+                <a href="register-recept.php" <? if(isset($_SESSION['gebruikerData'])){
+                    
+                    if($_SESSION['gebruikerData']['rol'] == "gebruiker"){
+                        echo "hidden";
+                    } 
+                } ?> > Recept Register </a> </td>
+                <td><br><br>
                 <a href="beheer-recept.php" <? if(isset($_SESSION['gebruikerData'])){
                     
                     if($_SESSION['gebruikerData']['rol'] == "gebruiker"){

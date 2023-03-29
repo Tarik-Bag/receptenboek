@@ -2,8 +2,6 @@
 
 require 'database.php';
 
-session_start();
-
 // controleren als admin is of niet
 if(isset($_SESSION['gebruikerData'])){
 
@@ -94,6 +92,9 @@ if (isset($_POST["submit"])){
 	</style>
 </head>
 <body>
+
+	<?php include 'assets/nav.php'; ?>
+
     <form action="" method="post">
 		<label for="naam">Naam:</label>
 		<input type="text" id="naam" name="naam" value="<?php echo $gebruiker["naam"]; ?>">

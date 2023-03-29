@@ -2,7 +2,6 @@
 
 require 'database.php';
 
-session_start();
 
 // controleren als admin is of niet
 if(isset($_SESSION['gebruikerData'])){
@@ -63,6 +62,9 @@ $gebruikers = $stmt->fetchAll();
 	</style>
 </head>
 <body>
+
+    <?php include 'assets/nav.php'; ?>
+
     <table>
 		<thead>
 			<tr>

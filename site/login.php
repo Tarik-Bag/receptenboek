@@ -3,9 +3,6 @@
 // database oproepen
 require 'database.php';
 
-// begonnen met session om login informati op andere paginas te gebruiken
-session_start();
-
 // controleer als submit button geklikt is
 if (isset($_POST['submit'])) {
 
@@ -88,7 +85,7 @@ if (isset($_POST['submit'])) {
         }
 
         input[type="submit"] {
-            background-color: #4CAF50;
+            background-color: #0082e6;
             border: none;
             border-radius: 3px;
             color: #FFFFFF;
@@ -102,6 +99,9 @@ if (isset($_POST['submit'])) {
 </head>
 
 <body>
+
+    <?php include 'assets/nav.php'; ?>
+
     <div class="login-box">
         <h1>Login</h1>
         <form action="" method="post">

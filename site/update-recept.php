@@ -2,8 +2,6 @@
 
 require 'database.php';
 
-session_start();
-
 // controleren als admin is of niet
 if(isset($_SESSION['gebruikerData'])){
 
@@ -32,7 +30,7 @@ $stmt->bindParam(':id', $id);
 $stmt->execute();
 
 $recept = $stmt->fetch(PDO::FETCH_ASSOC);
-var_dump($recept); die;
+// var_dump($recept); die;
 
 if (isset($_POST["submit"])){
 	
@@ -97,11 +95,20 @@ if (isset($_POST["submit"])){
 		}
 
 		input[type="submit"]:hover {
-			background-color: #3e8e41;
+			background-color: #0082e6;
+		}
+
+		input textarea{
+			width: 100px;
+			height: 70px;
+			
 		}
 	</style>
 </head>
 <body>
+
+	<?php include 'assets/nav.php'; ?>
+
     <form action="" method="post">
 		<label for="titel">Titel:</label>
 		<input type="text" id="titel" name="titel" value="<?php echo $recept["titel"]; ?>">

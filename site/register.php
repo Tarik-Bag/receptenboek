@@ -76,7 +76,7 @@ if(isset($_POST['submit'])){
         }
 
         button[type=submit] {
-            background-color: #4CAF50;
+            background-color: #0082e6;
             color: white;
             padding: 12px 20px;
             border: none;
@@ -92,6 +92,9 @@ if(isset($_POST['submit'])){
 </head>
 
 <body>
+
+    <?php include 'assets/nav.php'; ?>
+
     <form action="" method="post">
         <label for="naam">Naam</label>
         <input type="text" id="naam" name="naam" placeholder="Vul uw naam in" >

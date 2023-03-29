@@ -2,8 +2,6 @@
 
 require 'database.php';
 
-session_start();
-
 // controleren als admin is of niet
 if(isset($_SESSION['gebruikerData'])){
 
@@ -23,7 +21,7 @@ if(isset($_SESSION['gebruikerData'])){
 }
 
 
-$stmt = $conn->prepare("SELECT *, gebruiker.id AS gebruiker_ID FROM recept 
+$stmt = $conn->prepare("SELECT *, recept.id AS recept_ID, gebruiker.id AS gebruiker_ID FROM recept 
 LEFT JOIN gebruiker ON gebruiker.id = recept.gebruiker_id");
 $stmt->execute();
 
@@ -81,9 +79,13 @@ $recepten = $stmt->fetchAll();
 	</style>
 </head>
 <body>
+
+	<?php include 'assets/nav.php'; ?>
+
     <table>
         <thead>
             <tr>
+				<th>ID</th>
 				<th>Titel</th>
 				<th>Afbeelding</th>
 				<th>Duur</th>
@@ -101,6 +103,7 @@ $recepten = $stmt->fetchAll();
             <?php foreach ($recepten as $recept) { ?>
 
                 <tr>
+                    <td> <?php echo $recept["recept_ID"] ?> </td>
                     <td> <?php echo $recept["titel"] ?> </td>
                     <td> <?php echo $recept["afbeelding"] ?> </td>
                     <td> <?php echo $recept["duur"] ?> </td>
@@ -108,8 +111,8 @@ $recepten = $stmt->fetchAll();
                     <td> <?php echo $recept["moeilijkheid"] ?> </td>
                     <td> <?php echo $recept["instructies"] ?> </td>
                     <td> <?php echo $recept["naam"] ?> </td>
-                    <td> <a href="update-recept.php?id=<?php echo $recept["id"] ?>"> Update Data </a> </td>
-                    <td> <a href="delete-recept.php?id=<?php echo $recept["id"] ?>"> Delete Data </a> </td>
+                    <td> <a href="update-recept.php?id=<?php echo $recept["recept_ID"] ?>"> Update Data </a> </td>
+                    <td> <a href="delete-recept.php?id=<?php echo $recept["recept_ID"] ?>"> Delete Data </a> </td>
                 </tr>
 
             <?php } ?>

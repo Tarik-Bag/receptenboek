@@ -3,7 +3,7 @@
 // database oproepen
 require 'database.php';
 
-session_start();
+
 
 // controleren als admin is of niet
 if(isset($_SESSION['gebruikerData'])){
@@ -115,6 +115,9 @@ if(isset($_POST['submit'])){
 </head>
 
 <body>
+
+    <?php include 'assets/nav.php'; ?>
+
     <form action="" method="post">
 		<label for="titel">Titel:</label>
 		<input type="text" id="titel" name="titel" placeholder="Voer de titel in">
